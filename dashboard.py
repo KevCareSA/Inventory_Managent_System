@@ -1,5 +1,6 @@
 from tkinter import *
 from PIL import Image, ImageTk
+from employee import employeeClass
 
 class IMS:
     def __init__(self, root):
@@ -22,7 +23,7 @@ class IMS:
         
         # left menu
         self.menu_logo = Image.open("images/menu2.png")
-        self.menu_logo.thumbnail((120, 150))  
+        self.menu_logo.thumbnail((300, 150))  
         self.menu_logo = ImageTk.PhotoImage(self.menu_logo)     
         
         leftmenu = Frame(self.root, bd=2, relief=RIDGE, bg="white")
@@ -34,35 +35,41 @@ class IMS:
         self.icon_side = PhotoImage(file="images/side.png")
         lbl_menu = Label(leftmenu, text="Menu", font=("times new roman", 15), bg="#009688").pack(side=TOP, fill=X)
         
-        btn_employee = Button(leftmenu, text="Employee", image=self.icon_side, compound=LEFT, padx=10, anchor="w", font=("times new roman", 13, "bold"), bg="white", bd=3, cursor="hand2").pack(side=TOP, fill=X)
+        btn_employee = Button(leftmenu, text="Employee", command=self.employee, image=self.icon_side, compound=LEFT, padx=10, anchor="w", font=("times new roman", 13, "bold"), bg="white", bd=3, cursor="hand2").pack(side=TOP, fill=X)
         btn_supplier = Button(leftmenu, text="Supplier", image=self.icon_side, compound=LEFT, padx=10, anchor="w", font=("times new roman", 13, "bold"), bg="white", bd=3, cursor="hand2").pack(side=TOP, fill=X)
         btn_category = Button(leftmenu, text="Category", image=self.icon_side, compound=LEFT, padx=10, anchor="w", font=("times new roman", 13, "bold"), bg="white", bd=3, cursor="hand2").pack(side=TOP, fill=X)
+        btn_products = Button(leftmenu, text="Product", image=self.icon_side, compound=LEFT, padx=10, anchor="w", font=("times new roman", 13, "bold"), bg="white", bd=3, cursor="hand2").pack(side=TOP, fill=X)
         btn_sales = Button(leftmenu, text="Sales", image=self.icon_side, compound=LEFT, padx=10, anchor="w", font=("times new roman", 13, "bold"), bg="white", bd=3, cursor="hand2").pack(side=TOP, fill=X)
         btn_exit = Button(leftmenu, text="Exit", image=self.icon_side, compound=LEFT, padx=10, anchor="w", font=("times new roman", 13, "bold"), bg="white", bd=3, cursor="hand2").pack(side=TOP, fill=X)
 
         # content
-        self.lbl_employee = Label(self.root, text="Total Employees\n[0]", bd=4, relief=RIDGE, bg="#33bbf9", fg="white", font=("goudy old style", 15, "bold"))
-        self.lbl_employee.place(x=250, y=100, width=250, height=150)
         
-        self.lbl_supplier = Label(self.root, text="Total Suppliers\n[0]", bg="#33bbf9", fg="white", font=("goudy old style", 15, "bold"))
-        self.lbl_supplier.place(x=520, y=100, width=250, height=150)
+        self.lbl_employee = Label(self.root, text="Total Employees\n[0]", bd=4, relief=RIDGE, bg="#33bbf9", fg="white", font=("goudy old style", 15, "bold"))
+        self.lbl_employee.place(x=250, y=150, width=250, height=150)
+        
+        self.lbl_supplier = Label(self.root, text="Total Suppliers\n[0]", bd=4, relief=RIDGE, bg="#FF8E00", fg="white", font=("goudy old style", 15, "bold"))
+        self.lbl_supplier.place(x=600, y=150, width=250, height=150)
+        
+        self.lbl_category = Label(self.root, text="Total Categorys\n[0]", bd=4, relief=RIDGE, bg="#FFE400", fg="white", font=("goudy old style", 15, "bold"))
+        self.lbl_category.place(x=950, y=150, width=250, height=150)
+        
+        self.lbl_product = Label(self.root, text="Total Products\n[0]", bd=4, relief=RIDGE, bg="#06FF00", fg="white", font=("goudy old style", 15, "bold"))
+        self.lbl_product.place(x=250, y=350, width=250, height=150)
+        
+        self.lbl_sales = Label(self.root, text="Total Sales\n[0]", bd=4, relief=RIDGE, bg="#FF1700", fg="white", font=("goudy old style", 15, "bold"))
+        self.lbl_sales.place(x=600, y=350, width=250, height=150)
         
         # Footer
-        lbl_footer = Label(self.root, text="IMS - Inventory Management System | Developed by KevCare \nContact: +27735266552", font=("times new roman", 12), bg="#4d636d", fg="white").pack(side=BOTTOM, fill=X)
+        lbl_footer = Label(self.root, text="IMS - Inventory Management System | Developed by KevCare \nContact: +27735266552 ", font=("times new roman", 12), bg="#4d636d", fg="white").pack(side=BOTTOM, fill=X)
         
+    #======================================
+    
+    def employee(self):
+        self.new_window = Toplevel(self.root)
+        self.new_obj = employeeClass(self.new_window)
 
 
-
-
-
-
-
-
-
-
-
-
-
-root = Tk()
-obj = IMS(root)
-root.mainloop()
+if __name__ == "__main__":
+    root = Tk()
+    obj = IMS(root)
+    root.mainloop()
