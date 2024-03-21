@@ -60,7 +60,7 @@ class IMS:
         self.lbl_sales.place(x=600, y=350, width=250, height=150)
         
         # Footer
-        lbl_footer = Label(self.root, text="IMS - Inventory Management System | Developed by KevCare \nContact: +27735266552 ", font=("times new roman", 12), bg="#4d636d", fg="white").pack(side=BOTTOM, fill=X)
+        lbl_footer = Label(self.root, text="IMS - Inventory Management System | Developed by KevCare \nContact: @KgosiKevin ", font=("times new roman", 12), bg="#4d636d", fg="white").pack(side=BOTTOM, fill=X)
         
     #======================================
     
