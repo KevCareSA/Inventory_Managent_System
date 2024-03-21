@@ -1,6 +1,7 @@
+import sqlite3
 from tkinter import *
 from PIL import Image, ImageTk
-from tkinter import ttk
+from tkinter import ttk, messagebox
 
 class employeeClass:
     def __init__(self, root):
@@ -89,15 +90,15 @@ class employeeClass:
         
         #=======Row4==========
         lbl_address = Label(self.root, text="Address", font=("goudy old style", 15), bg="white",).place(x=50, y=270)
-        lbl_salary = Label(self.root, text="Salary", font=("goudy old style", 15), bg="white",).place(x=350, y=270)
+        lbl_salary = Label(self.root, text="Salary", font=("goudy old style", 15), bg="white",).place(x=500, y=270)
         
-        self.txt_address = Text(self.root, font=("goudy old style", 15), bg="lightyellow",)
+        self.txt_address = Text(self.root, font=("goudy old style", 15), bg="lightyellow")
         self.txt_address.place(x=150, y=270, width=300, height=60)
-        txt_salary = Entry(self.root,textvariable=self.var_salary, font=("goudy old style", 15), bg="lightyellow",).place(x=500, y=270, width=180)
+        txt_salary = Entry(self.root,textvariable=self.var_salary, font=("goudy old style", 15), bg="lightyellow",).place(x=600, y=270, width=180)
         
          
         #=======buttons==========
-        btn_add = Button(self.root, text="Save", font=("goudy old style", 15), bg="#2196f3", fg="white", cursor="hand2").place(x=500, y=305, width=110, height=28)
+        btn_add = Button(self.root, text="Save", command=self.add, font=("goudy old style", 15), bg="#2196f3", fg="white", cursor="hand2").place(x=500, y=305, width=110, height=28)
         btn_update = Button(self.root, text="Update", font=("goudy old style", 15), bg="#4caf50", fg="white", cursor="hand2").place(x=620, y=305, width=110, height=28)
         btn_delete = Button(self.root, text="Delete", font=("goudy old style", 15), bg="#f44336", fg="white", cursor="hand2").place(x=740, y=305, width=110, height=28)
         btn_clear = Button(self.root, text="Clear", font=("goudy old style", 15), bg="#607d8b", fg="white", cursor="hand2").place(x=860, y=305, width=110, height=28)
@@ -146,6 +147,37 @@ class employeeClass:
         
         self.employeeTable.pack(fill=BOTH, expand=1)
         
+#================================================================
+
+    def add(self):
+        con=sqlite3.connect(database=r'inventory.db')
+        cur = con.cursor()
+        try:
+            if self.var_emp_id.get()=="" or self.var_name.get()=="" or self.var_email.get()=="":
+                messagebox.showerror("Error", "Employee ID, Name and Email fields are required", parent=self.root)
+            else:
+                cur.execute("SELECT * FROM employee WHERE eid=?", (self.var_emp_id.get(),))
+                row = cur.fetchone()
+                if row!=None:
+                    messagebox.showerror("Error", "Employee ID already exists", parent=self.root)
+                else:
+                    cur.execute("INSERT INTO employee (eid, name, email, gender, contact, dob, doj, pass, address, salary) values(?,?,?,?,?,?,?,?,?,?)", (
+                        self.var_emp_id.get(),
+                        self.var_name.get(),
+                        self.var_email.get(),
+                        self.var_gender.get(),
+                        self.var_contact.get(),
+                        self.var_dob.get(),
+                        self.var_doj.get(),
+                        self.var_pass.get(),
+                        self.txt_address.get("1.0", END),
+                        self.var_salary.get()
+                    ))
+                    con.commit()
+                    messagebox.showinfo("Success", "Employee added successfully", parent=self.root)
+            
+        except Exception as ex:
+            messagebox.showerror("Error", f"Error due to: {str(ex)}")
         
         
         
