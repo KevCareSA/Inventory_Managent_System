@@ -1,6 +1,7 @@
 from tkinter import *
 from PIL import Image, ImageTk
 from employee import employeeClass
+from supplier import supplierClass
 
 class IMS:
     def __init__(self, root):
@@ -36,7 +37,7 @@ class IMS:
         lbl_menu = Label(leftmenu, text="Menu", font=("times new roman", 15), bg="#009688").pack(side=TOP, fill=X)
         
         btn_employee = Button(leftmenu, text="Employee", command=self.employee, image=self.icon_side, compound=LEFT, padx=10, anchor="w", font=("times new roman", 13, "bold"), bg="white", bd=3, cursor="hand2").pack(side=TOP, fill=X)
-        btn_supplier = Button(leftmenu, text="Supplier", image=self.icon_side, compound=LEFT, padx=10, anchor="w", font=("times new roman", 13, "bold"), bg="white", bd=3, cursor="hand2").pack(side=TOP, fill=X)
+        btn_supplier = Button(leftmenu, text="Supplier", command=self.supplier, image=self.icon_side, compound=LEFT, padx=10, anchor="w", font=("times new roman", 13, "bold"), bg="white", bd=3, cursor="hand2").pack(side=TOP, fill=X)
         btn_category = Button(leftmenu, text="Category", image=self.icon_side, compound=LEFT, padx=10, anchor="w", font=("times new roman", 13, "bold"), bg="white", bd=3, cursor="hand2").pack(side=TOP, fill=X)
         btn_products = Button(leftmenu, text="Product", image=self.icon_side, compound=LEFT, padx=10, anchor="w", font=("times new roman", 13, "bold"), bg="white", bd=3, cursor="hand2").pack(side=TOP, fill=X)
         btn_sales = Button(leftmenu, text="Sales", image=self.icon_side, compound=LEFT, padx=10, anchor="w", font=("times new roman", 13, "bold"), bg="white", bd=3, cursor="hand2").pack(side=TOP, fill=X)
@@ -67,6 +68,10 @@ class IMS:
     def employee(self):
         self.new_window = Toplevel(self.root)
         self.new_obj = employeeClass(self.new_window)
+        
+    def supplier(self):
+        self.new_window = Toplevel(self.root)
+        self.new_obj = supplierClass(self.new_window)
 
 
 if __name__ == "__main__":
