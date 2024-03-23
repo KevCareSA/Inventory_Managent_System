@@ -2,7 +2,6 @@ from tkinter import *
 from PIL import Image, ImageTk
 from tkinter import ttk, messagebox
 import sqlite3
-import os
 
 class supplierClass:
     def __init__(self, root):
