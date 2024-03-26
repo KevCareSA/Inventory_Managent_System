@@ -13,7 +13,7 @@ def create_db():
     cursor.execute("CREATE TABLE IF NOT EXISTS category (cid INTEGER PRIMARY KEY AUTOINCREMENT, name text)")
     conn.commit()
     
-    cursor.execute("CREATE TABLE IF NOT EXISTS products (pid INTEGER PRIMARY KEY AUTOINCREMENT, Supplier text, Category text, name text, price text, qty text, status text)")
+    cursor.execute("CREATE TABLE IF NOT EXISTS products (pid INTEGER PRIMARY KEY AUTOINCREMENT, Category text, Supplier text, name text, price text, qty text, status text)")
     conn.commit()
 
 create_db()
