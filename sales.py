@@ -61,7 +61,7 @@ class salesClass:
         #======img1=========
         self.bill_img = Image.open("images/bill4.png")
         resized_img = self.bill_img.resize((110, 110), Image.BICUBIC)
-        #self.bill_img = self.bill_img.resize((500, 500), Image.ANTIALIAS)
+
         self.bill_img = ImageTk.PhotoImage(self.bill_img)
         
         lbl_image = Label(self.root, image=self.bill_img)
@@ -83,40 +83,26 @@ class salesClass:
     def get_data(self, ev):
         index = self.sales_list.curselection()
         file_name = self.sales_list.get(index)
-        #print(file_name)
-        fp = open(f"bill/{file_name}", "r")
+        print(file_name)
         self.bill_area.delete('1.0', END)
+        fp = open(f"bill/{file_name}", "r")
         for i in fp:
             self.bill_area.insert(END, i)
         fp.close()
         
         
-    class Sales:
-        def search(self):
-            """
-            Search for a specific invoice number and display the corresponding bill.
-
-            If the invoice number is not provided or is empty, an error message is displayed.
-            If the invoice number is found in the bill list, the corresponding bill is displayed in the bill area.
-            If the invoice number is not found in the bill list, an error message is displayed.
-
-            Args:
-                None
-
-            Returns:
-                None
-            """
-            if self.var_invoice.get() == "":
-                messagebox.showerror("Error", "Invoice Number Required", parent=self.root)
+    def search(self):
+        if self.var_invoice.get() == "":
+            messagebox.showerror("Error", "Invoice Number Required", parent=self.root)
+        else:
+            if self.var_invoice.get() in self.bill_list:
+                fp = open(f"bill/{self.var_invoice.get()}.txt", "r")
+                self.bill_area.delete('1.0', END)
+                for i in fp:
+                    self.bill_area.insert(END, i)
+                fp.close()
             else:
-                if self.var_invoice.get() in self.bill_list:
-                    fp = open(f"bill/{self.var_invoice.get()}.txt", "r")
-                    self.bill_area.delete('1.0', END)
-                    for i in fp:
-                        self.bill_area.insert(END, i)
-                    fp.close()
-                else:
-                    messagebox.showerror("Error", "Invalid Invoice Number", parent=self.root)
+                messagebox.showerror("Error", "Invalid Invoice Number", parent=self.root)
         
         
     def clear(self):
