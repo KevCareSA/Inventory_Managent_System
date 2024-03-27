@@ -17,7 +17,7 @@ class supplierClass:
         self.var_searchby = StringVar()
         self.var_searchtxt = StringVar()
         
-        #self.var_supplier_id = StringVar()
+        self.var_supplier_id = StringVar()
         self.var_sup_invoice = StringVar()
         self.var_name = StringVar()
         self.var_contact = StringVar()
