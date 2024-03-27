@@ -49,9 +49,8 @@ class employeeClass:
         tittle = Label(self.root, text="Employee Details", font=("goudy old style", 15), bg="#0f4d7d", fg="white").place(x=50, y=100, width=1000)
         
         
-        # content
-        
-        
+        #========Content===========================
+ 
         #=======Row1==========
         lbl_empid = Label(self.root, text="Emp ID", font=("goudy old style", 15), bg="white",).place(x=50, y=150)
         lbl_gender = Label(self.root, text="Gender", font=("goudy old style", 15), bg="white",).place(x=350, y=150)
