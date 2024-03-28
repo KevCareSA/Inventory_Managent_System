@@ -37,7 +37,7 @@ class salesClass:
         sales_frame.place(x=50, y=140, width=200, height=330)
         
         scrolly = Scrollbar(sales_frame, orient=VERTICAL)
-        self.sales_list = Listbox(sales_frame, font=("goudy old style", 15), bg="white", yscrollcommand=scrolly.set)
+        self.sales_list = Listbox(sales_frame, font=("goudy old style", 13), bg="white", yscrollcommand=scrolly.set)
         scrolly.pack(side=RIGHT, fill=Y)
         scrolly.config(command=self.sales_list.yview)
         self.sales_list.pack(fill=BOTH, expand=1)
@@ -47,10 +47,10 @@ class salesClass:
         bill_frame = Frame(self.root, bd=3, relief=RIDGE)
         bill_frame.place(x=270, y=140, width=410, height=330)
         
-        lbl_tittle2 = Label(bill_frame, text="Customer Bill Area", font=("goudy old style", 20), bg="orange", fg="white").pack(side=TOP, fill=X)
+        lbl_tittle2 = Label(bill_frame, text="Customer Bill Area", font=("goudy old style", 14), bg="orange", fg="white").pack(side=TOP, fill=X)
         
         scrolly2 = Scrollbar(bill_frame, orient=VERTICAL)
-        self.bill_area = Text(bill_frame, font=("goudy old style", 14), bg="lightyellow", yscrollcommand=scrolly2.set)
+        self.bill_area = Text(bill_frame, font=("goudy old style", 8), bg="lightyellow", yscrollcommand=scrolly2.set)
         scrolly2.pack(side=RIGHT, fill=Y)
         scrolly2.config(command=self.bill_area.yview)
         self.bill_area.pack(fill=BOTH, expand=1)
