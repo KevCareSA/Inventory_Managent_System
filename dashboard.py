@@ -5,6 +5,12 @@ from supplier import supplierClass
 from category import categoryClass
 from product import productClass
 from sales import salesClass
+import sqlite3
+from tkinter import ttk, messagebox
+import os
+import time
+from datetime import datetime   
+
 
 class IMS:
     def __init__(self, root):
@@ -18,7 +24,7 @@ class IMS:
         title = Label(self.root, text="Inventory Management System", image=self.icon_tittle, compound=LEFT, font=("times new roman", 20, "bold"),bg="#010c48", anchor="w", padx=20, fg="white").place(x=0, y=0, relwidth=1, height=70)
 
         # btn logout
-        btn_logout = Button(title, text="Logout", font=("times new roman", 10, "bold"), bg="yellow", cursor="hand2").place(x=1150, y=15, width=140, height=35)
+        btn_logout = Button(title, text="Logout", command=self.logout, font=("times new roman", 10, "bold"), bg="yellow", cursor="hand2").place(x=1150, y=15, width=140, height=35)
         #command=self.logout,
         
         # clock
@@ -65,7 +71,7 @@ class IMS:
         
         # Footer
         lbl_footer = Label(self.root, text="IMS - Inventory Management System | Developed by KevCare \nContact: @KgosiKevin ", font=("times new roman", 12), bg="#4d636d", fg="white").pack(side=BOTTOM, fill=X)
-        
+        self.update_content()
     #======================================
     
     def employee(self):
@@ -87,6 +93,43 @@ class IMS:
     def sales(self):
         self.new_window = Toplevel(self.root)
         self.new_obj = salesClass(self.new_window)
+        
+    def update_content(self):
+        con = sqlite3.connect(database="inventory.db")
+        cur = con.cursor()
+        try:
+            employees = cur.fetchall()
+            self.lbl_employee.config(text=f"Total Products\n[{str(len(employees))}]")
+            
+            cur.execute("SELECT * FROM supplier")
+            suppliers = cur.fetchall()
+            self.lbl_supplier.config(text=f"Total Suppliers\n[{str(len(suppliers))}]")
+            
+            cur.execute("SELECT * FROM category")
+            categorys = cur.fetchall()
+            self.lbl_category.config(text=f"Total Categorys\n[{str(len(categorys))}]")
+            
+            cur.execute("SELECT * FROM Employee")
+            employees = cur.fetchall()
+            self.lbl_employee.config(text=f"Total Employees\n[{str(len(employees))}]")
+            bill = len(os.listdir("bill/"))
+            self.lbl_sales.config(text=f"Total Sales\n[{str(bill)}]")
+            
+            
+            formatted_time = time.strftime("%H:%M:%S")
+            formatted_date = time.strftime("%d-%m-%Y")
+            self.lbl_clock.config(text=f"Welcome To The Inventory Management System\t\t Date: {formatted_date}\t\t Time: {formatted_time}")
+            self.lbl_clock.after(200, self.update_content)
+            
+            con.close()
+        except Exception as ex:
+            messagebox.showerror("Error", f"Error due to: {str(ex)}", parent=self.root)
+            
+            
+    
+    def logout(self):
+        self.root.destroy()
+        os.system("python login.py")
         
         
 
