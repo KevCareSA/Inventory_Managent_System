@@ -1,0 +1,20 @@
+
+        		 KevCare Tech Warehouse
+        	 Phone No. : 0123456789, Johannesburg
+        =======================================
+         Customer Name: Monate Mpolaye
+          Phone No. : 0987213144
+          Bill No.  : 28216139		 Date:28/03/2024
+        =======================================
+         Product Name			Qty		Price
+        =======================================
+        
+            
+ SWE			 4	 R1500150015001500.0
+                =============================
+                Total Amount			 R6000.0
+                Discount: 5% 			 R300.0
+                Net Pay 				 R5700.0
+                =============================
+                	 Thanks for shopping with us
+                
