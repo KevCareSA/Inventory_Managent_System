@@ -32,7 +32,7 @@ class billingClass:
         
         title=Label(self.root,text="Inventry Management System",image=self.icon_title,compound=LEFT,font=("times new roman",20,"bold"),bg="#010c48",fg="white",anchor="w",padx="20").place(x=0,y=0,relwidth=1,height=70)
         #========btn_logout
-        btn_logout=Button(self.root,text="logout",font=("times new roman",10,"bold"),bg="yellow",cursor="hand2").place(x=1150,y=15,width=140,height=35) #command=self.log_out,
+        btn_logout=Button(self.root,text="logout", command=self.logout, font=("times new roman",10,"bold"),bg="yellow",cursor="hand2").place(x=1150,y=15,width=140,height=35) #command=self.log_out,
         #=========Clock========
         self.lbl_clock=Label(self.root,text="Welcome to the Inventry Management System\t\t Date: DD-MM-YYYY \t\t Time: HH:MM:SS", font=("times new roman", 10), bg="#4d636d", fg="white")
         self.lbl_clock.place(x=0,y=70,relwidth=1,height=30)
@@ -250,7 +250,7 @@ class billingClass:
         footer = Label(self.root,text="Developed By: @KgosiKevin",font=("times new roman",10),bg="#4d636d",fg="white").pack(side=BOTTOM,fill=X)
         
         self.show()
-        #self.bill_top()
+        self.bill_top()
         self.update_date_time()
         
         #=================Functionality=======================
@@ -501,6 +501,10 @@ class billingClass:
         self.lbl_clock.config(text=f"Welcome to the Inventory Management System\t\t Date: {formatted_date} \t\t Time: {formatted_time}")
         self.lbl_clock.after(1000, self.update_date_time)
     
+    
+    def logout(self):
+        self.root.destroy()
+        os.system("python login.py")
     
         
             
