@@ -22,7 +22,7 @@ class IMS:
         #command=self.logout,
         
         # clock
-        self.lbl_clock = Label(self.root, text="Welcom To Inventory Management System\t\t Date: DD-MM-YYYY\t\t Time: HH:MM:SS", font=("times new roman", 10), bg="#4d636d", fg="white")
+        self.lbl_clock = Label(self.root, text="Welcom To The Inventory Management System\t\t Date: DD-MM-YYYY\t\t Time: HH:MM:SS", font=("times new roman", 10), bg="#4d636d", fg="white")
         self.lbl_clock.place(x=0, y=70, relwidth=1, height=25)
         
         # left menu
