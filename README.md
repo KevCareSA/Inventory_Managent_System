@@ -29,19 +29,13 @@ The Efficient Inventory Tracker is a desktop application developed using Python 
 1. Clone the repository to your local machine:
 
    ```
-   git clone https://github.com/your_username/inventory-tracker.git
+   git clone https://github.com/KevCareSA/Inventory_Managent_System.git
    ```
 
 2. Navigate to the project directory:
 
    ```
-   cd inventory-tracker
-   ```
-
-3. Install the required dependencies:
-
-   ```
-   pip install -r requirements.txt
+   cd Inventory_Managent_System
    ```
 
 ## Usage
