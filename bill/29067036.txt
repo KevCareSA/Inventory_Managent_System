@@ -2,19 +2,19 @@
         		 KevCare Tech Warehouse
         	 Phone No. : 0123456789, Johannesburg
         =======================================
-         Customer Name: ABC Cash
+         Customer Name: Elon Musk
           Phone No. : 0987654321
-          Bill No.  : 28207831		 Date:28/03/2024
+          Bill No.  : 29067036		 Date:29/03/2024
         =======================================
          Product Name			Qty		Price
         =======================================
         
             
- SWE			 2	 R15001500.0
+ Samsung S24			 3	 R150001500015000.0
                 =============================
-                Total Amount			 R3000.0
-                Discount: 5% 			 R150.0
-                Net Pay 				 R2850.0
+                Total Amount			 R45000.0
+                Discount: 5% 			 R2250.0
+                Net Pay 				 R42750.0
                 =============================
                 	 Thanks for shopping with us
                 
