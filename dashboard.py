@@ -70,7 +70,7 @@ class IMS:
         self.lbl_sales.place(x=600, y=350, width=250, height=150)
         
         # Footer
-        lbl_footer = Label(self.root, text="IMS - Inventory Management System | Developed by KevCare \nContact: @KgosiKevin ", font=("times new roman", 12), bg="#4d636d", fg="white").pack(side=BOTTOM, fill=X)
+        lbl_footer = Label(self.root, text="IMS - Inventory Management System | Developed by KevCare \nContact: @CodingKevCare on twitter ", font=("times new roman", 12), bg="#4d636d", fg="white").pack(side=BOTTOM, fill=X)
         self.update_content()
     #======================================
     
@@ -98,8 +98,9 @@ class IMS:
         con = sqlite3.connect(database="inventory.db")
         cur = con.cursor()
         try:
-            employees = cur.fetchall()
-            self.lbl_employee.config(text=f"Total Products\n[{str(len(employees))}]")
+            products = cur.fetchall()
+            cur.execute("SELECT * FROM products")
+            self.lbl_product.config(text=f"Total Products\n[{str(len(products))}]")
             
             cur.execute("SELECT * FROM supplier")
             suppliers = cur.fetchall()
