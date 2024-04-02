@@ -210,8 +210,8 @@ class employeeClass:
         self.var_dob.set(self.employeeTable.item(self.employeeTable.selection())["values"][5])
         self.var_doj.set(self.employeeTable.item(self.employeeTable.selection())["values"][6])
         self.var_pass.set(self.employeeTable.item(self.employeeTable.selection())["values"][7])
-        self.txt_address.insert(END, self.employeeTable.item(self.employeeTable.selection())["values"][9])
-        self.var_salary.set(self.employeeTable.item(self.employeeTable.selection())["values"][10])
+        self.txt_address.insert(END, self.employeeTable.item(self.employeeTable.selection())["values"][8])
+        self.var_salary.set(self.employeeTable.item(self.employeeTable.selection())["values"][9])
         
         
     def update(self):
